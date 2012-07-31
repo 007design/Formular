@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Formular by 007design</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Formular</h1>
+          <h2>Front-end demonstration of Formulate, a dynamic data collection and manipulation system.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/007design/Formular/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/007design/Formular/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/007design/Formular" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "<a href="http://www.w3.org/TR/html4/loose.dtd%22%3E">http://www.w3.org/TR/html4/loose.dtd"&gt;</a>
+
+</p>
+Formulate Docs<p></p>
+
+
+    .nav li { border-bottom:1px solid #e6e6e6; padding-left:5px;}
+<p>
+</p>
+
+<pre><code>&lt;div class="container-fluid"&gt;
+    &lt;div class="row-fluid"&gt;
+        &lt;!-- Begin TOC Span --&gt;
+        &lt;div class="span2"&gt;
+            &lt;div class="well"&gt;
+                &lt;ul class="nav"&gt;
+                    &lt;li&gt;&lt;a href="#terms"&gt;Terms / Concepts&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#inputView"&gt;Input View&lt;/a&gt;&lt;/li&gt;                        
+                    &lt;li&gt;&lt;a href="#dashboardView"&gt;Dashboard View&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#updateView"&gt;Update View&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href="#managerView"&gt;Manager View&lt;/a&gt;
+                        &lt;ul class="nav" style="margin-left:15px;"&gt;
+                            &lt;li&gt;&lt;a href="#managerView"&gt;User Manager View&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#adminManagerView"&gt;Admin Manager View&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href="#editorView"&gt;Editor View&lt;/a&gt;
+                        &lt;ul class="nav" style="margin-left:15px;"&gt;
+                            &lt;li&gt;&lt;a href="#editorView-toolbar"&gt;Toolbar&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-viewOptions"&gt;View Options&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;a href="#editorView-viewFieldsEditor"&gt;View Fields Editor&lt;/a&gt;
+
+                                &lt;ul class="nav" style="margin-left:15px;"&gt;
+                                    &lt;li&gt;&lt;a href="#editorView-viewFieldsEditor-field"&gt;Field Properties&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="#editorView-viewFieldsEditor-options"&gt;Options&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="#editorView-viewFieldsEditor-triggers"&gt;Triggers&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="#editorView-viewFieldsEditor-viscond"&gt;Visibility Conditions&lt;/a&gt;&lt;/li&gt;                                       
+                                    &lt;li&gt;&lt;a href="#editorView-viewFieldsEditor-desc"&gt;Description / Scripts&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-notificationsEditor"&gt;Notifications Editor&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-eventsEditor"&gt;Events Editor&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-filtersEditor"&gt;Filters Editor&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-viewUsersEditor"&gt;View Users Editor&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#editorView-formEditor"&gt;Form Editor&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#userAccess"&gt;User Access&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#stylingAndScripting"&gt;Styling and Scripting Views&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#jsonSubmissions"&gt;JSON Submissions [Web Services]&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#credits"&gt;Credits, Libraries &amp;amp; Licenses&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- End TOC Span --&gt;
+
+        &lt;!-- Begin Content Span --&gt;
+        &lt;div class="span10"&gt;            
+            &lt;!-- Terms --&gt;
+            &lt;a name="terms"&gt;&lt;/a&gt;
+            &lt;h1&gt;Terms / Concepts&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;dl&gt;
+                    &lt;dt&gt;INPUT VIEW&lt;/dt&gt;
+                    &lt;dd&gt;A VIEW used for entering new SUBMISSIONs into the system.&lt;/dd&gt;
+
+                    &lt;dt&gt;DASHBOARD VIEW&lt;/dt&gt;                 
+                    &lt;dd&gt;A VIEW for displaying the history of submissions to a
+                        particular form (note, that is submissions to a FORM, not a single
+                        VIEW).&lt;/dd&gt;
+
+                    &lt;dt&gt;UPDATE VIEW&lt;/dt&gt;
+                    &lt;dd&gt;A VIEW for updating the values of an existing SUBMISSION&lt;/dd&gt;
+
+                    &lt;dt&gt;ACCOUNT&lt;/dt&gt;
+                    &lt;dd&gt;All Users and all Views belong to an ACCOUNT. Primarily
+                        this is for implementing access restrictions. A USER may only
+                        access VIEWs which are in their ACCOUNT.&lt;/dd&gt;
+
+                    &lt;dt&gt;ALIAS&lt;/dt&gt;
+                    &lt;dd&gt;ACCOUNTs and VIEWs have a property called Alias which is the
+                        name of the account or view converted into an alphanumeric, camel
+                        case string. So, for example, the view "My First View" would have
+                        an alias of "myFirstView"&lt;/dd&gt;
+
+                    &lt;dt&gt;USER&lt;/dt&gt;
+                    &lt;dd&gt;A simple user definition describing a username and
+                        password as well as an account. All users are associated with a
+                        single ACCOUNT and may or may not be ADMINs.&lt;/dd&gt;
+
+                    &lt;dt&gt;ADMIN&lt;/dt&gt;
+                    &lt;dd&gt;ADMIN users have the ability to edit FORMs and create new
+                        VIEWs&lt;/dd&gt;
+
+                    &lt;dt&gt;FORM&lt;/dt&gt;
+                    &lt;dd&gt;
+                        A FORM is a collection of FIELDS representing every piece of
+                        information you may want to collect. &lt;br /&gt;Note that FORMs are not
+                        tied to an account.&lt;/dd&gt;
+
+                    &lt;dt&gt;FIELD&lt;/dt&gt;
+                    &lt;dd&gt;
+                        A FIELD represents one piece of information. This could be
+                        directly related to an HTML field like "Product Type" or "Part
+                        Number but it may also represent other data, for example,
+                        "Submission Status" or "Currently Assigned To". &lt;br /&gt;Note that
+                        since FORMs are not tied to an ACCOUNT a single FIELD may be part
+                        of more than one VIEW.&lt;/dd&gt;
+
+                    &lt;dt&gt;OPTION&lt;/dt&gt;
+                    &lt;dd&gt;OPTIONs make up the list of possible values for an HTML
+                        field. For example, given a &amp;lt;select&amp;gt; (dropdown) control, the
+                        possible selections would be considered OPTIONs&lt;/dd&gt;
+
+                    &lt;dt&gt;FORM OPTION&lt;/dt&gt;
+                    &lt;dd&gt;A FORM OPTION is an option which cannot be removed or
+                        altered by a user with EDIT VIEW permission, only ADMIN users can
+                        modify FORM OPTIONs. The purpose of this is to allow other users
+                        to configure VIEWs but to ensure that some options are always
+                        present.&lt;/dd&gt;
+
+                    &lt;dt&gt;VIEW&lt;/dt&gt;
+                    &lt;dd&gt;A VIEW is a subset of FIELDS from one particular FORM.
+                        Let's say that you have a FORM with these three FIELDs: "Product
+                        Owner", "Product Type", and "Part Number". Now, say that most of
+                        your users will be filling out all three fields when submitting a
+                        request. However, perhaps you have another set of users which is
+                        only allowed to submit one "Product Type". They would not need to
+                        see the "Product Type" field as it's not applicable to them. In
+                        this case you could create two VIEWs one of which would include
+                        all three fields while the other included only "Product Owner" and
+                        "Part Number".&lt;/dd&gt;
+
+                    &lt;dt&gt;USER VIEW&lt;/dt&gt;
+                    &lt;dd&gt;A USER VIEW is a database object which indicates that a
+                        given user has access to a given view. ADMIN users may always
+                        access every VIEW in their ACCOUNT but non-admin users must have
+                        each VIEW assigned to them. This assignment creates a USER VIEW.&lt;/dd&gt;
+
+                    &lt;dt&gt;VIEW FIELD&lt;/dt&gt;
+                    &lt;dd&gt;A VIEW FIELD is associated with a particular VIEW and a
+                        particular FIELD. Using the example in the description of VIEW,
+                        the first set of users would have 3 VIEW FIELDS while the second
+                        set would have only 2. VIEW FIELDs have properties which relate to
+                        an HTML form field like "field label" and "is required". The
+                        second set of users from the example would have two VIEW FIELDs,
+                        "Product Owner" and "Part Number". Let's say that these users have
+                        a different term for "Part Number", they call it "Product ID". You
+                        can assign the label "Product ID" to the VIEW FIELD representing
+                        "Part Number" so that the user sees the text "Product ID" but the
+                        value for this field in their submission will still be tied to the
+                        "Part Number" FORM FIELD. In this way you can have several VIEW
+                        FIELDs with different names and properties (one is required,
+                        another is not, etc) which will all tie their values back to a
+                        single FORM FIELD so the submissions from multiple VIEWs may be
+                        viewed together in a common DASHBOARD VIEW.&lt;/dd&gt;
+
+                    &lt;dt&gt;FIELD TYPE&lt;/dt&gt;
+                    &lt;dd&gt;Each VIEW FIELD has a FIELD TYPE which determines the type
+                        of HTML control that will be displayed in the INPUT VIEW and
+                        UPDATE VIEW. Examples are "text field", "drop down", "checkbox
+                        group", etc.&lt;/dd&gt;
+
+                    &lt;dt&gt;VIEW OPTION&lt;/dt&gt;
+                    &lt;dd&gt;A VIEW OPTION is an OPTION which may be modified or
+                        removed by any user with EDIT VIEW permission.&lt;/dd&gt;
+
+                    &lt;dt&gt;TRIGGER&lt;/dt&gt;
+                    &lt;dd&gt;A TRIGGER represents a client-side event which is fired
+                        when the user modifies a VIEW FIELD say by selecting an option
+                        from a drop down or checking a checkbox. TRIGGERs modify the
+                        values of other VIEW FIELDs on the page.&lt;/dd&gt;
+
+                    &lt;dt&gt;TRIGGER TYPE&lt;/dt&gt;
+                    &lt;dd&gt;There are 3 TRIGGER TYPEs.
+                        &lt;ol&gt;
+                            &lt;li&gt;VALUE TRIGGER - sets the value of a field (selects an
+                                option in a dropdown, marks a checkbox, etc.)&lt;/li&gt;
+                            &lt;li&gt;VALUESET TRIGGER - replaces the OPTIONS of a VIEW FIELD
+                                with a given set. An example would be selecting Honda in one
+                                dropdown and having a second dropdown automatically populated
+                                with Accord, Camry, Civic, etc.&lt;/li&gt;
+                            &lt;li&gt;URL VALUESET - same as a VALUESET but the options,
+                                rather than being statically defined, are retrieved from a URL&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/dd&gt;
+
+                    &lt;dt&gt;TRIGGER VALUE&lt;/dt&gt;
+                    &lt;dd&gt;In the case of a VALUE TRIGGER, the value to which the
+                        target field will be set. In the case of a VALUESET, the options
+                        which are to replace those of the target field.&lt;/dd&gt;
+
+                    &lt;dt&gt;TRIGGER CONDITION&lt;/dt&gt;
+                    &lt;dd&gt;Conditions which must be met in order for a trigger to be
+                        applied.&lt;/dd&gt;
+
+                    &lt;dt&gt;VISIBILITY CONDITION&lt;/dt&gt;
+                    &lt;dd&gt;Conditions which must be met for a VIEW FIELD to be shown
+                        (if it is hidden).&lt;/dd&gt;
+
+                    &lt;dt&gt;EVENT&lt;/dt&gt;
+                    &lt;dd&gt;An event is triggered in response to a submission. Events
+                        update submission values. An example would be automatically
+                        changing the "status" of an submission to "updated" when the
+                        submission is updated.&lt;/dd&gt;
+
+                    &lt;dt&gt;EVENT CONDITION&lt;/dt&gt;
+                    &lt;dd&gt;Conditions which must be met for an event to be triggered.&lt;/dd&gt;
+
+                    &lt;dt&gt;NOTIFICATION&lt;/dt&gt;
+                    &lt;dd&gt;An email which will be sent out when either a form is
+                        submitted or when a submission is updated.&lt;/dd&gt;
+
+                    &lt;dt&gt;FILTER&lt;/dt&gt;
+                    &lt;dd&gt;Adds a button to the DASHBOARD VIEW which, when selected,
+                        will filter the submissions displayed.&lt;/dd&gt;
+
+                    &lt;dt&gt;SUBMISSION&lt;/dt&gt;
+                    &lt;dd&gt;A submission to a VIEW&lt;/dd&gt;
+                &lt;/dl&gt;
+            &lt;/div&gt;
+
+            &lt;a name="inputView"&gt;&lt;/a&gt;
+            &lt;div class="pull-right" style="color:#aaa"&gt;&lt;h4&gt;URL Format: /formulate/&lt;span style="color:#000"&gt;form&lt;/span&gt;/[&lt;i&gt;account alias&lt;/i&gt;]/[&lt;i&gt;view alias&lt;/i&gt;]&lt;/h4&gt;&lt;/div&gt;
+            &lt;h1&gt;Input View&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig1-inputView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;p&gt;The INPUT VIEW is what you would most easily think of as a
+                    "standard web form". It consists of empty field inputs each
+                    representing a VIEW FIELD in the VIEW configuration.&lt;/p&gt;
+                &lt;p&gt;The screenshot to the right shows an INPUT VIEW with one
+                    field of each possible type. Note that the datepicker looks like a
+                    regular textfield until it is selected.
+                    &lt;br/&gt;Here is a brief description of each type of field.&lt;/p&gt;
+
+                &lt;a name="inputView-textField"&gt;&lt;/a&gt;
+                &lt;blockquote&gt;
+                    &lt;dl&gt;
+                        &lt;dt&gt;Text Field&lt;/dt&gt;
+                        &lt;dd&gt;A basic text field&lt;/dd&gt;
+
+                        &lt;dt&gt;Datepicker&lt;/dt&gt;
+                        &lt;dd&gt;A popup datepicker&lt;/dd&gt;
+
+                        &lt;dt&gt;Drop Down&lt;/dt&gt;
+                        &lt;dd&gt;A single-selection, drop-down list&lt;/dd&gt;
+
+                        &lt;dt&gt;Checkbox Group&lt;/dt&gt;
+                        &lt;dd&gt;A set of checkboxes, each with a separate option, which
+                            can be independently selected. Note that the checkboxes are not
+                            individual FIELDs but instead the entire group of checkboxes is a
+                            single VIEW FIELD.&lt;/dd&gt;
+
+                        &lt;dt&gt;Radio Buttons&lt;/dt&gt;
+                        &lt;dd&gt;A group of radio buttons only one of which may be selected.&lt;/dd&gt;
+
+                        &lt;dt&gt;Textarea&lt;/dt&gt;
+                        &lt;dd&gt;A multi-row text area&lt;/dd&gt;
+
+                        &lt;dt&gt;Upload&lt;/dt&gt;
+                        &lt;dd&gt;An asynchronous, multi-file upload control. Unlike the
+                            standard HTML upload field, files are uploaded asynchronously
+                            meaning that as soon as the user selects a file it begins to
+                            upload without the user being required to click submit. The file
+                            upload progress will be shown while the file uploads and the
+                            upload action may be canceled at any time. Also note that, unlike
+                            the standard control, the user is able to upload more than one
+                            file.&lt;/dd&gt;
+
+                    &lt;/dl&gt;
+                &lt;/blockquote&gt;
+
+                MORE STUFF GOES HERE
+
+                &lt;div style="clear:both"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;a name="dashboardView"&gt;&lt;/a&gt;
+            &lt;div class="pull-right" style="color:#aaa"&gt;&lt;h4&gt;URL Format: /formulate/&lt;span style="color:#000"&gt;dashboard&lt;/span&gt;/[&lt;i&gt;account alias&lt;/i&gt;]/[&lt;i&gt;view alias&lt;/i&gt;]&lt;/h4&gt;&lt;/div&gt;
+            &lt;h1&gt;Dashboard View&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig2-dashboardView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;h4&gt;Submission Rows&lt;/h4&gt;
+                &lt;p&gt;Each row in the table represents a submission object. The values
+                    displayed are the current submission values. That is, if a
+                    submission is updated these values will reflect the updated value
+                    rather than the initial value of the field.&lt;/p&gt;
+                &lt;p&gt;Clicking on the table header will sort the table by that column.
+                    Clicking again will sort in the opposite direction. An arrow will
+                    be displayed indicating the sort column and direction.&lt;/p&gt;
+                &lt;p&gt;Submission fields may have multiple values in the case of
+                    checkbox or upload input controls. In this case, the values will
+                    be displayed in a list. Upload fields values link to the uploaded
+                    file.&lt;/p&gt;
+
+                &lt;h4&gt;Filter Buttons&lt;/h4&gt;
+                &lt;p&gt;In the top left corner are displayed Filter Toggle buttons.
+                    These buttons will filter the list of submissions by specific
+                    criteria. See the editor section for more information about
+                    filters.&lt;/p&gt;
+
+                &lt;h4&gt;Search&lt;/h4&gt;
+                &lt;p&gt;The search field in the top right corner will filter the
+                    submissions based upon a search term. The search will be performed
+                    against all fields in the submission.&lt;/p&gt;
+
+                &lt;h4&gt;Pagination&lt;/h4&gt;
+                &lt;p&gt;By default, 10 records at a time will be displayed. The label below the pagination will display the total number of records.&lt;/p&gt;
+
+                &lt;div style="clear:both"&gt;&lt;/div&gt;
+
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig3-dashboardHistory.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;h4&gt;History&lt;/h4&gt;
+                &lt;p&gt;Clicking the History button opens a popup showing the history of
+                    the selected submission. Each submissions event is displayed as a
+                    row with the final column containing the user who submitted the
+                    values and the date the submission was made.&lt;/p&gt;
+
+                &lt;h4&gt;Edit Button&lt;/h4&gt;
+                &lt;p&gt;If the form has both the Dashboard View and the Update View
+                    enabled, the edit button will open an Update View for the selected
+                    submission in a popup.&lt;/p&gt;
+
+                &lt;div style="clear:both"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;a name="updateView"&gt;&lt;/a&gt;
+            &lt;div class="pull-right" style="color:#aaa"&gt;&lt;h4&gt;URL Format: /formulate/&lt;span style="color:#000"&gt;update&lt;/span&gt;/[&lt;i&gt;account alias&lt;/i&gt;]/[&lt;i&gt;view alias&lt;/i&gt;]/[&lt;i&gt;submission id&lt;/i&gt;]&lt;/h4&gt;&lt;/div&gt;
+            &lt;h1&gt;Update View&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig3-updateView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                TEXT HERE
+                &lt;div style="clear:both"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;a name="managerView"&gt;&lt;/a&gt;
+            &lt;div class="pull-right" style="color:#aaa"&gt;&lt;h4&gt;URL Format: /formulate/&lt;span style="color:#000"&gt;manager&lt;/span&gt;/[&lt;i&gt;account alias&lt;/i&gt;]&lt;/h4&gt;&lt;/div&gt;
+            &lt;h1&gt;Manager View - User&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig4-managerView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;h4&gt;User Account Editor&lt;/h4&gt;
+
+                &lt;h4&gt;Views List&lt;/h4&gt;
+            &lt;/div&gt;
+
+            &lt;a name="adminManagerView"&gt;&lt;/a&gt;
+            &lt;h1&gt;Manager View - Admin&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig5-adminManagerView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;h4&gt;Account Users Editor&lt;/h4&gt;
+
+                &lt;h4&gt;Views List&lt;/h4&gt;
+
+                &lt;h4&gt;Form Editor&lt;/h4&gt;
+            &lt;/div&gt;
+
+            &lt;a name="editorView"&gt;&lt;/a&gt;
+            &lt;div class="pull-right" style="color:#aaa"&gt;&lt;h4&gt;URL Format: /formulate/&lt;span style="color:#000"&gt;edit&lt;/span&gt;/[&lt;i&gt;account alias&lt;/i&gt;]/[&lt;i&gt;view alias&lt;/i&gt;]&lt;/h4&gt;&lt;/div&gt;
+            &lt;h1&gt;Editor View&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                &lt;div class="pull-right"&gt;
+                    &lt;span class="thumbnail" style="background-color:#fff"&gt;&lt;img src="docs/fig6-editorView.jpg"/&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;a name="editorView-toolbar"&gt;&lt;/a&gt;
+                &lt;h4&gt;Toolbar Links&lt;/h4&gt;
+
+                &lt;a name="editorView-viewOptions"&gt;&lt;/a&gt;
+                &lt;h4&gt;View Options&lt;/h4&gt;
+
+                &lt;a name="editorView-viewFieldsEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;View Fields Editor&lt;/h4&gt;
+
+                &lt;div class="margin-left:20px;"&gt;
+                    &lt;a name="editorView-viewFieldsEditor-field"&gt;&lt;/a&gt;
+                    &lt;h4&gt;Field Properties&lt;/h4&gt;
+                    &lt;a name="editorView-viewFieldsEditor-options"&gt;&lt;/a&gt;
+                    &lt;h4&gt;Options&lt;/h4&gt;
+                    &lt;a name="editorView-viewFieldsEditor-triggers"&gt;&lt;/a&gt;
+                    &lt;h4&gt;Triggers&lt;/h4&gt;
+                    &lt;a name="editorView-viewFieldsEditor-viscond"&gt;&lt;/a&gt;
+                    &lt;h4&gt;Visibility Conditions&lt;/h4&gt;
+                    &lt;a name="editorView-viewFieldsEditor-desc"&gt;&lt;/a&gt;
+                    &lt;h4&gt;Description / Scripts&lt;/h4&gt;
+                &lt;/div&gt;
+
+                &lt;a name="editorView-notificationsEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;Notifications Editor&lt;/h4&gt;
+
+                &lt;a name="editorView-eventsEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;Events Editor&lt;/h4&gt;
+
+                &lt;a name="editorView-filtersEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;Filters Editor&lt;/h4&gt;
+
+                &lt;a name="editorView-viewUsersEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;View Users Editor&lt;/h4&gt;
+
+                &lt;a name="editorView-formEditor"&gt;&lt;/a&gt;
+                &lt;h4&gt;Form Editor&lt;/h4&gt;
+            &lt;/div&gt;
+
+            &lt;a name="userAccess"&gt;&lt;/a&gt;
+            &lt;h1&gt;User Access&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                TEXT HERE
+            &lt;/div&gt;
+
+            &lt;a name="stylingAndScripting"&gt;&lt;/a&gt;
+            &lt;h1&gt;Styling and Scripting Views&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                TEXT HERE
+            &lt;/div&gt;
+
+            &lt;a name="jsonSubmissions"&gt;&lt;/a&gt;
+            &lt;h1&gt;JSON Submissions [Web Services]&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                TEXT HERE
+            &lt;/div&gt;
+
+            &lt;a name="jsonSubmissions"&gt;&lt;/a&gt;
+            &lt;h1&gt;Credits, Libraries &amp;amp; Licenses&lt;/h1&gt;
+            &lt;div class="well"&gt;
+                Formulate makes use of the following Java Libraries:
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;b&gt;Stripes 1.5.6&lt;/b&gt; - &lt;a href="http://stripesframework.org"&gt;http://www.stripesframework.com&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;ORM Lite 4.4.0&lt;/b&gt; - &lt;a href="http://www.ormlite.com"&gt;http://www.ormlite.com&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;Jackson 1.9.5&lt;/b&gt; - &lt;a href="http://jackson.codehaus.org/"&gt;http://jackson.codehaus.org/&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;GSON&lt;/b&gt; - &lt;a href="http://code.google.com/p/google-gson/"&gt;http://code.google.com/p/google-gson/&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;Apache Velocity 1.7&lt;/b&gt; - &lt;a href="http://velocity.apache.org/"&gt;http://velocity.apache.org/&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;b&gt;Apache log4j 1.2&lt;/b&gt; - &lt;a href="http://logging.apache.org/log4j/1.2/"&gt;http://logging.apache.org/log4j/1.2/&lt;/a&gt;&lt;/li&gt;                      
+                    &lt;li&gt;&lt;b&gt;Apache Commons&lt;/b&gt; - beanutils, collections, fileupload, io, lang, logging, validator&lt;/li&gt;
+                &lt;/ul&gt;
+                All of the above libraries are available under the Apache 2.0 license - &lt;a href="http://www.apache.org/licenses/LICENSE-2.0"&gt;http://www.apache.org/licenses/LICENSE-2.0&lt;/a&gt;
+
+                &lt;br/&gt;&lt;br/&gt;
+
+                The browser interface for Formulate is built using the Google Angular JS framework - &lt;a href="http://angularjs.org"&gt;http://angularjs.org&lt;/a&gt;
+                &lt;br/&gt;
+                and the Twitter Bootstrap CSS framework - &lt;a href="http://twitter.github.com/bootstrap"&gt;http://twitter.github.com/bootstrap&lt;/a&gt;
+
+                &lt;br/&gt;&lt;br/&gt;
+
+                Formulate was written by Daniel Hinds-Bond - &lt;a href="http://007design.com"&gt;http://007design.com&lt;/a&gt;            
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;!-- End Content Span --&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>
+</p>
+        </section>
+
+        <footer>
+          Formular is maintained by <a href="https://github.com/007design">007design</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
