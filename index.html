@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:ng="http://angularjs.org/" ng-app="app">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Client Side Test</title>
+	
+	<!-- app config -->
+	<script type="text/javascript">
+			var accountId = 1;
+			var userId = 1;
+			var username = 'test user';
+			var viewId = 1;
+			var contextPath = '/Formulate/demo';
+	</script>
+			
+	<!-- styles -->
+	<link href="styles.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css">
+	
+	<!-- scripts -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-resource.min.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+		
+	<!-- angular-ui -->
+	<link href="lib/angular-ui.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="lib/angular-ui.js"></script>
+	
+	<!-- Bootstrap popover / tooltip -->
+	<script type="text/javascript" src="https://raw.github.com/einars/js-beautify/master/beautify.js"></script>	
+		
+	<!-- datepicker -->
+	<link href="lib/bootstrap-datepicker.css" rel="stylesheet" type="text/css">	
+	<script type="text/javascript" src="lib/bootstrap-datepicker.js"></script>	
+		
+	<!-- fileuploader -->	
+	<link href="lib/fileuploader.css" rel="stylesheet" type="text/css">	
+	<script type="text/javascript" src="lib/fileuploader.js"></script>
+			
+	<!-- modules -->
+	<script type="text/javascript" src="scripts/app.demo-services.js"></script>
+	<script type="text/javascript" src="scripts/app.directives.js"></script>
+	<script type="text/javascript" src="scripts/view.input.js"></script>
+	<script type="text/javascript" src="scripts/view.update.js"></script>
+	<script type="text/javascript" src="scripts/view.dashboard.js"></script>
+	<script type="text/javascript" src="scripts/editor.view.js"></script>
+	<script type="text/javascript" src="scripts/editor.fields.js"></script>
+	<script type="text/javascript" src="scripts/app.demo-controller.js"></script>
+	
+	<!--[if lte IE 8]>
+	   	<script>
+	       	document.createElement('ng-include');
+	       	document.createElement('ng-form');
+	       	document.createElement('formulate-textfield');
+	       	document.createElement('formulate-dropdown');
+	       	document.createElement('formulate-checkboxes');
+	       	document.createElement('formulate-radios');
+	       	document.createElement('formulate-textarea');
+	       	document.createElement('formulate-uploader');
+	   	</script>
+	<![endif]-->	
+		
+</head>
+<body>	
+	<div class="container-fluid" ng-controller="demoCtrl">
+		<div class="row-fluid">
+
+			<!-- Tabs -->
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#inputViewTab" data-toggle="tab">Input View</a></li>
+				<li><a href="#dashboardViewTab" data-toggle="tab">Dashboard View</a></li>
+				<li><a href="#editorTab" data-toggle="tab">View Editor</a></li>
+			</ul>
+			
+			<!-- Tab Content -->
+			<div class="tab-content">
+				
+				<!-- Input View -->
+				<div class="tab-pane active" id="inputViewTab">
+					<div class="row-fluid" ng-controller="InputViewCtrl">
+						
+						<!-- JSON view -->
+						<div class="span3">		
+							<h3>Input View</h3>
+							<div class="row-fluid">
+								<pre class="pre-scrollable">{{pretty(view)}}</pre>
+							</div>
+						</div><!-- JSON view -->
+						<div class="span3">		
+							<h3>Submission</h3>
+							<div class="row-fluid">
+								<pre class="pre-scrollable">{{pretty(submission)}}</pre>
+							</div>
+						</div>
+						<!-- End JSON view -->
+						
+						<div class="span6">
+							<ng-include src="'partials/view-input.html'"></ng-include>	
+						</div>
+					</div>
+				</div>			
+				<!-- End Input View -->
+				
+				<!-- Dashboard View -->
+				<div class="tab-pane" id="dashboardViewTab">					
+					<div class="row-fluid" ng-controller="DashboardCtrl">
+					
+						<!-- JSON view -->
+						<div class="span2">		
+							<h3>Submissions</h3>
+							<div class="row-fluid">
+								<pre class="pre-scrollable">{{pretty(dashboardSvc.submissions)}}</pre>
+							</div>
+						</div>
+						<!-- End JSON view -->
+						
+						<div class="span10">
+							<ng-include src="'partials/view-dashboard.html'"></ng-include>
+						</div>							
+					</div>
+				</div>
+				<!-- End Dashboard View -->
+				
+				<!-- Editor Tab -->
+				<div class="tab-pane" id="editorTab">
+					<div class="row-fluid" ng-controller="ViewEditorCtrl">
+						<form id="viewEditor_form" name="viewEditor_form">									
+							<!-- Fields Editor -->
+							<div class="page-header">
+							
+				
+								<input type="submit" 
+								   	value="Save" 
+								   	class="btn pull-right" 
+								   	ng-click="save()"
+								   	ng-disabled="isSaveDisabled()"/>
+							   	<input type="button" 
+								    value="Cancel" 
+								    class="btn pull-right"  
+								    ng-disabled="isCancelDisabled()"
+								    ng-click="cancel()"/> 
+								<h2>Fields Editor</h2>
+							</div>
+							
+							<div class="row-fluid" ng-controller="ViewFieldsListCtrl">
+								<ng-include src="'partials/editor-fields.html'"></ng-include>
+							</div>								
+						</form>
+						
+					</div>
+				</div>
+				<!-- End Editor Tab -->
+			</div>
+			<!-- End Tab Content -->
+			
+		</div>
+	</div>    
+</body>
+</html>

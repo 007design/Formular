@@ -1,0 +1,281 @@
+<!--  View Fields List -->
+<div id="viewFieldsList" class="container-fluid" ng-sortable="editorSvc.view.viewFields">
+ 	
+	<div class="row-fluid viewfield-row"
+		 ng-repeat="vf in editorSvc.view.viewFields | orderBy:'sequence'" 
+		 ng-controller="ViewFieldEditorCtrl"
+		 ng-init="viewField = vf"
+		 ng-sortable-index="{{$index}}"
+		 ng-class-even="'even'">
+		
+		<div class="span12">
+				
+			<div class="row-fluid">
+				
+				<!-- View Field Properties -->				
+				<div class="span2">
+					<div class="pull-left">
+						<div class="pull-left" style="width:16px;">
+							<i class="icon-arrow-up" ng-hide="vf.sequence==1" ng-click="moveUp($index)"></i>
+							<i class="icon-arrow-down" ng-hide="vf.sequence==editorSvc.view.viewFields.length" ng-click="moveDown($index)"></i>
+						</div>					
+						<h2 class="viewfield-sequence pull-left">
+							{{vf.sequence}}
+						</h2>
+					</div>
+					<div class="pull-left">
+						<label>Form Property</label>
+						<select class="input-medium" ng-options="v.id as v.name for v in editorSvc.form.fields" ng-model="vf.field.id" required>
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+				<div class="span2">
+					<label>Field Label</label>
+					<input class="input-medium" type="text" ng-model="vf.label" required/>
+				</div>
+				<div class="span2">
+					<label>Input Type</label>
+					<select class="input-medium" ng-options="v.id as v.name for (k,v) in fieldTypes" ng-model="vf.fieldType.id" required></select>
+				</div>
+				
+				<!-- Toggle Buttons -->
+				<div class="span3">
+					<div class="pull-left">
+						<label>Field Settings</label>
+						<div class="btn-group" data-toggle="buttons-checkbox">
+							<button href class="btn {{isActive(vf.required)}}" data-toggle="button" ng-click="vf.required = !vf.required" title="Required" ui-tooltip title="Required?"><i class="icon-exclamation-sign"></i></button>
+							<button href class="btn {{isActive(vf.visibility)}}" data-toggle="button" ng-click="vf.visibility = !vf.visibility" title="Visibility" ui-tooltip title="Field is visible when the view loads"><i class="icon-eye-open"></i></button>
+							<button href class="btn {{isActive(vf.editable)}}" data-toggle="button" ng-click="vf.editable = !vf.editable" title="Editable"><i class="icon-pencil" ui-tooltip title="Field may be edited in the <b>INPUT</b> and <b>UPDATE</b> views."></i></button>			
+							<button ng-disabled="vf.fieldType.id == 1 || vf.fieldType.id > 4" href class="btn {{isActive(vf.custom)}}" data-toggle="button" ng-click="vf.custom = !vf.custom" title="Other Option" ui-tooltip title="Include an <b>Other</b> option."><i class="icon-comment"></i></button>
+						</div>
+					</div>
+					
+					<div class="pull-left" style="margin-left:10px;">
+						<label>RegEx</label>					
+						<input class="input-mini" type="text" ng-model="vf.regEx"/>
+					</div>
+				</div>
+				
+				<div class="span3">
+					<ul class="nav nav-pills">
+						<li ng-click="showOptions = !showOptions" ng-class="isActive(showOptions)"><a href>Options</a></li>
+						<li ng-click="showTriggers = !showTriggers" ng-class="isActive(showTriggers)"><a href>Triggers</a></li>
+						<li ng-click="showVisCond = !showVisCond" ng-class="isActive(showVisCond)"><a href>VisCond</a></li>
+						<li ng-click="showDesc = !showDesc" ng-class="isActive(showDesc)"><a href>Description</a></li>
+						<li ng-click="showScript = !showScript" ng-class="isActive(showScript)"><a href>Scripts</a></li>
+						<li><span class="close" title="Delete Field" ng-click="editorSvc.view.viewFields.splice($index,1)">&times;</span></li>			
+					</ul>
+				</div>
+			</div>	
+			<!-- End View Field Properties -->
+
+			<div class="well" ng-show="showOptions || showTriggers || showDesc || showScript || showVisCond">
+				<div class="row-fluid">
+				
+					<!-- Script and Description -->
+					<div class="span6 pull-right" ng-show="showDesc || showScript">
+						<div class="row-fluid" ng-show="showDesc">
+							<h4>Description</h4>			
+								
+							<textarea class="span12" id="editorInput_description{{$index}}" ng-model="vf.description"></textarea>
+						</div>
+						<div class="row-fluid" ng-show="showScript">
+							<h4>Scripts</h4>
+							
+							<textarea class="span12" id="editorInput_script{{$index}}" ng-model="vf.script"></textarea>	
+						</div>		
+					</div>
+					<!-- End Script and Description -->
+			
+					<!-- Visibility Conditions -->
+					<div class="span6 pull-left" ng-show="showVisCond">	
+						<h4>Visibility Conditions</h4>
+						<span class="separator"></span>		
+													
+						<div class="row-fluid" ng-repeat="vc in vf.visibilityConditions" ng-class-even="'even'">
+							
+							<select class="input-mini" ng-model="vc.join">
+								<option value="0">AND</option>
+								<option value="1">OR</option>
+							</select>
+										   
+							<select ng-options="v.id as v.label for (k,v) in editorSvc.view.viewFields"
+									ng-model="vc.target.id"
+									required></select>
+						
+							<select class="input-small" ng-options="v.id as v.name for (k,v) in comparisonTypes"									
+									ng-model="vc.comparison"
+									required></select>
+						
+							<input type="text" class="input-medium" ng-model="vc.value" placeholder="Value" required/>
+							
+							<button class="btn" 
+								    ng-click="vf.visibilityConditions.splice($index,1)">
+								<i class="icon-remove"></i>
+							</button>				
+						</div>
+			
+						<div class="row-fluid">
+							<input type="button" 
+								   class="btn span12"
+								   value="Add Visibility Condition"
+								   ng-click="addVisCondition()"/>
+						</div>
+					</div>
+					<!-- End Visibility Conditions -->
+				</div>
+		
+				<div class="row-fluid">
+					
+					<!-- View Field Options -->	
+					<div class="span3 pull-left viewfield-options" ng-show="showOptions">
+						<h4>Options</h4>	
+						
+						<span class="separator"></span>
+						
+						<div class="row-fluid" ng-repeat="o in formOptions()" ng-class-even="'even'">
+							<div class="pull-right"><span class="label" ng-show="o.defaultValue">Default</span></div>
+							{{o.value}}
+						</div>
+						<div class="row-fluid" ng-repeat="vo in vf.viewOptions" ng-class-even="'even'">
+							<input class="pull-left input-medium" type="text" ng-model="vo.value" required/>
+							<span class="btn pull-left"
+								title="Delete Option"
+								ng-click="vf.viewOptions.splice($index,1)">
+								<i class="icon-remove"></i>
+							</span>
+							<div class="pull-left options-default">
+								<label class="checkbox inline">
+									<input type="checkbox"
+										   id="optionDefaultRadio{{vo.id}}"
+										   ng-model="vo.defaultValue"
+										   ng-click="setDefault(vo)"/>
+									Default
+								</label>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<input class="pull-left input-medium" type="text" ng-model="newOption.value"/>
+							<div class="pull-left viewfield-options-button">
+								<span class="btn"
+									ng-click="addOption()"
+									ng-disabled="!newOption">
+									<i class="icon-plus"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- End View Field Options -->
+									
+					<!-- View Field Triggers -->	
+					<div class="span9 pull-right viewfield-triggers" ng-show="showTriggers">
+						<div class="btn btm-mini pull-right"
+							ng-click="addTrigger()">
+							<i class="icon-plus"></i>
+						</div>
+						<h4>Triggers</h4>			
+						
+						<span class="separator"></span>									
+								
+						<div class="row-fluid" ng-repeat="vt in vf.triggers" ng-class-even="'even'">
+									
+							<div class="span3 trigger-properties">
+								<!-- Trigger Target -->
+								<label>Target</label>
+								<select class="input-medium" ng-options="v.id as v.label for (k,v) in editorSvc.view.viewFields"
+									ng-model="vt.target.id" 
+									required></select>
+														
+								<!-- Trigger Type -->
+								<label>Type</label>
+								<select class="input-medium" ng-options="v.id as v.name for (k,v) in triggerTypes"
+									ng-model="vt.type.id" 
+									required></select>
+							</div>
+							
+							<!-- Trigger Conditions -->
+							<div class="span6 trigger-conditions">
+								<h5>Conditions</h5>
+								
+								<span class="separator"></span>
+								
+								<div class="row-fluid form-inline" ng-repeat="tc in vt.triggerConditions" ng-class-even="'even'">						
+										   								   
+									<div class="span3 pull-left" ng-show="vt.triggerConditions[0]==tc">{{vf.label}}</div>
+									<div class="span3 pull-left" ng-hide="vt.triggerConditions[0]==tc">
+										<select ng-options="v.id as v.label for (k,v) in editorSvc.view.viewFields"
+												ng-model="tc.target.id"
+												ng-required="vt.triggerConditions[0]!=tc"></select>
+									</div>
+									
+									<div class="span3 pull-left">
+										<select ng-options="v.id as v.name for (k,v) in comparisonTypes"									
+												ng-model="tc.comparison"
+												required></select>
+									</div>
+									
+									<div class="span3 pull-left">
+										<input type="text" class="input-medium" ng-model="tc.value" placeholder="Value" required/>
+									</div>
+									
+									<button class="btn pull-right"
+										    ng-hide="vt.triggerConditions[0]==tc" 
+										    ng-click="vt.triggerConditions.splice($index,1)">
+										<i class="icon-remove"></i>
+									</button>					
+									
+								</div>
+								
+								<div class="row-fluid">
+									<button class="btn btn-mini span12"
+										    ng-click="addCondition(vt)">Add Condition</button>
+								</div>							
+							</div>
+							<!-- End Trigger Conditions -->
+							
+							<!-- Trigger Values -->
+							<div class="span3 trigger-values">
+								<h5>Values</h5>
+								<span class="separator"></span>
+								
+								<div class="row-fluid" ng-repeat="tv in vt.triggerValues | orderBy:tv.sequence" ng-class-even="'even'">						
+									<button class="pull-right close" title="Delete Value" ng-click="vt.triggerValues.splice($index,1)">&times;</button>
+									{{tv.value}}
+								</div>
+								
+								<input type="text" 
+									   class="input-medium" 
+									   ng-model="newTriggerValue.value"/>
+									   
+								<span class="btn pull-right"
+									    ng-click="addTriggerValue(vt)"
+									    ng-disabled="!newTriggerValue.value">
+									<i class="icon-plus"></i>
+								</span>
+							</div>
+							<!-- End Trigger Values -->
+															
+							<button class="btn pull-right" title="Delete Trigger" ng-click="vf.triggers.splice($index,1)">
+								<i class="icon-remove"></i>
+							</button>
+		
+						</div>
+																   
+					</div>		
+					<!-- End View Field Triggers -->
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>	
+
+	<div class="row-fluid">
+		<!-- New View Field Button -->
+		<button class="btn span12" 
+			    ng-show="fieldsRemaining()"
+			    ng-click="addField()">New Field</button>
+	</div>	
+	
+</div>

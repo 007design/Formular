@@ -1,0 +1,16 @@
+input.ng-invalid, select.ng-invalid, textarea.ng-invalid { border: solid 1px red; }
+
+.requiredStar {
+	color:#ff0000;
+	margin:0 20px 0 5px;
+}
+
+#historyModal {
+	width:1000px;
+	height:500px;
+}
+
+pre {
+	font-size:10px !important;
+	line-height:12px !important;
+}

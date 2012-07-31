@@ -1,0 +1,103 @@
+<div id="dashboardArea" class="container-fluid">
+
+	<div id="filtersArea" class="navbar">
+<!-- 		<div id="filtersArea" class="navbar navbar-fixed-top"> -->
+		<div class="navbar-inner">
+			<div class="container-fluid">	
+				<div class="input-append pull-right">
+             		<input class="input-medium" type="text" ng-model="dashboardSvc.search"><button class="btn" type="button" ng-click="doSearch()">Search</button>
+           		</div>
+           		
+				<div class="btn-group" data-toggle="buttons-checkbox">
+					<button class="btn btn-mini" data-toggle="checkbox" ng-repeat="f in dashboardSvc.filters" ng-model="f.state" ng-click="doFitlers(f)">{{f.label}}</button>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<div class="row-fluid" style="margin-top:45px;">
+		<table id="submissionsTable" class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th class="indexColumn" width="1%">#</th>
+					<th ng-repeat="vf in dashboardView.viewFields" class="submissionColumn" ng-click="doSort(vf)">
+						<div class="valueContainer">
+							<span class="sortArrow pull-right">
+								<i class="icon-arrow-down" ng-show="dashboardSvc.sortDir && vf.field.id == dashboardSvc.sortBy.id"></i>
+								<i class="icon-arrow-up" ng-show="!dashboardSvc.sortDir && vf.field.id == dashboardSvc.sortBy.id"></i>
+							</span>
+							{{vf.label}}
+						</div>
+					</th>
+					<th class="buttonColumn">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="s in dashboardSvc.submissions">
+					<td class="indexColumn" width="1%">{{s.id}}</td>
+					<td ng-repeat="vf in dashboardView.viewFields" class="submissionColumn" value-display="vf" submission="s">
+					</td>
+					<td class="submissionColumn">
+						<input type="button" class="editButton btn-mini" ng-show="dashboardView.enableUpdate" value="Edit" data-toggle="modal" data-target="#editModal" ng-click="editSubmission(s)"/>
+						<input type="button" class="historyButton btn-mini" data-toggle="modal" data-target="#historyModal" ng-click="showSubmissionHistory(s)" value="History"/>									
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="pagination">
+		<ul>
+			<li ng-class="isFirstPage()"><a ng-click="prevPage()">Prev</a></li>
+			<li ng-repeat="page in dashboardSvc.pages()" ng-class="activePage(page)"><a ng-click="dashboardSvc.offset = page">{{$index+1}}</a></li>
+			<li ng-class="isLastPage()"><a ng-click="nextPage()">Next</a></li>
+		</ul>
+	</div>
+	
+	<span class="label">Showing {{dashboardSvc.offset+1}} to {{dashboardSvc.offset+dashboardSvc.count}} of {{dashboardSvc.total}} records</span>
+
+	<div id="historyModal" class="modal hide">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal">x</button>
+            <h3>Submission History [{{historyModalHeader}}]</h3>
+        </div>
+        <div class="modal-body">
+        
+			<table id="historyTable" class="table-striped table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="vf in dashboardView.viewFields" class="submissionColumn" ng-click="doSort(vf)">
+							<div class="valueContainer">
+								{{vf.label}}
+							</div>
+						</th>
+						<th class="submissionColumn">&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="valSet in subHistory | orderBy:'id':true">
+						<td ng-repeat="vf in dashboardView.viewFields" class="submissionColumn" value-display="vf" submission="histSub">
+						</td>
+						<td class="submissionColumn" width="{{columnWidth()}}">
+							{{valSet.user.name}}<br/>{{valSet.timestamp | date:'short'}}
+						</td>
+					</tr>
+				</tbody>
+			</table>			
+        </div>
+    </div>
+
+	<div id="editModal" class="modal hide">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">x</button>
+			<h3>Edit Submission [{{editModalHeader}}]</h3>
+		</div>
+		<div class="modal-body">
+			<div id="editorAreaForm">
+				<ng-include src="'partials/view-update.html'" ng-controller="UpdateViewCtrl"></ng-include>
+			</div>
+		</div>
+	</div>
+</div>
+
+	

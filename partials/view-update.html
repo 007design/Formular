@@ -1,0 +1,61 @@
+Update
+<div class="row-fluid" id="inputFormRow">
+	<form id="theForm" name="theForm" class="form-horizontal">
+		<!-- 
+			Iterate over the view fields
+			Note the ng-init statement which sets the current iterator object
+			to a property of the ViewFieldController instance
+		 -->
+		<div class="control-group" 
+			 id="viewFieldRow-{{alias}}"
+			 ng-repeat="vf in view.viewFields | orderBy:'sequence'"
+		 	 ng-controller="UpdateViewFieldCtrl"
+		 	 ng-init="viewField = vf"
+		 	 ng-show="vf.visibility">
+		 	 		 	 
+	 		<label class="control-label" for="inputElement-{{alias}}">{{vf.label}}<span class="requiredStar" ng-show="vf.required">*</span></label>		 		
+	 		
+	 		<div ng-switch="vf.editable">
+	 			<div class="display-value" ng-switch-when="false">
+	 				{{getValue(vf)}}
+	 			</div>			 		
+				<div ng-switch-when="true" ng-switch="vf.fieldType.id" class="controls" id="fieldInputArea-{{alias}}">
+		 		<input ng-switch-when="1" id="input-{{alias}}" type="text" ng-model="vf.value" ng-pattern="regex()" ng-required="isRequired()" ng-disabled="isDisabled()"/>
+	 		
+			 		<!-- Field Type : 2 (Drop Down) -->
+			 		<formulate-dropdown field="vf" ng-switch-when="2"></formulate-dropdown>
+		 		
+			 		<!-- Field Type : 3 (Checkbox Group) -->
+			 		<formulate-checkboxes ng-switch-when="3" ng-model="vf"></formulate-checkboxes>
+		 	
+			 		<!-- Field Type : 4 (Radio Button Group) -->
+				 	<formulate-radios ng-switch-when="4" ng-model="vf"></formulate-radios>
+		 		
+			 		<!-- Field Type : 5 (Text Area) -->
+			 		<formulate-textarea ng-switch-when="5" field="vf"></formulate-textarea>
+		 				  
+			 		<!-- Field Type : 6 (Upload) -->
+			 		<formulate-uploader ng-switch-when="6" ng-model="vf" url="../../do/upload"></formulate-uploader>
+		 		
+		 			<!-- Field Type : 7 -->
+					<input ng-switch-when="7" class="input-datepicker" id="input-{{alias}}" type="text" ng-model="vf.value" ng-required="isRequired()" ng-disabled="isDisabled()"/>
+	 			  				 				 
+			 	</div>
+		 	</div>
+		 		 		
+	 		<p class="help-block">
+	 			<div ng-bind-html-unsafe="vf.description"></div>
+	 		</p>
+		</div>
+		<!-- End .viewFieldRow -->
+		
+		<input type="submit" 
+			   value="Save" 
+			   class="save-button btn btn-primary" 
+			   id="saveButton" 
+			   ng-hide="thinking"
+			   ng-disabled="theForm.$invalid"
+			   ng-click="save()"/>
+				   
+	</form>
+</div>
